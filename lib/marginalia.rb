@@ -24,7 +24,7 @@ module Marginalia
       execute_without_marginalia("#{sql} /*#{Marginalia::Comment.to_s}*/", name)
     end
 
-    def exec_query_with_marginalia(sql, name = nil, binds = nil)
+    def exec_query_with_marginalia(sql, name = nil, binds = [])
       Marginalia::Comment.update! if Marginalia::Comment.components.include? :line
       exec_query_without_marginalia("#{sql} /*#{Marginalia::Comment.to_s}*/", name, binds)
     end
